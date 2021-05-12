@@ -40,4 +40,9 @@ a,
 .router-link-active {
   text-decoration: none;
 }
+
+a,a:link,a:visited,a:hover,a:active{
+    text-decoration: none;
+    color:inherit;
+}
 </style>

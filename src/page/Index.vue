@@ -9,6 +9,18 @@
       </el-carousel>
     </div>
 
+    <!-- 爷要买车 -->
+
+    <div class="recommend-brand">
+        <div class="r-b-top">
+            <a href="/buy">我要买车<i class="el-icon-arrow-right"></i> </a> 
+        </div>
+
+        <e-row>
+            <e-col> </e-col>
+        </e-row>
+    </div>
+
     <!-- 今日推荐 -->
     <div class="recommend">
       <el-row class="recommend-top">
@@ -42,6 +54,15 @@ export default {
 <style lang="less">
 .banner img {
   border-radius: 2px;
+}
+.recommend-brand{
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px 20px 15px 20px;
+     margin-top: 30px;
+     .r-b-top{
+         text-align: left;
+     }
 }
 .recommend {
     margin: 30px 0 20px 0;
