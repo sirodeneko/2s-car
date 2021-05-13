@@ -10,15 +10,142 @@
     </div>
 
     <!-- 爷要买车 -->
-
     <div class="recommend-brand">
         <div class="r-b-top">
             <a href="/buy">我要买车<i class="el-icon-arrow-right"></i> </a> 
         </div>
 
-        <e-row>
-            <e-col> </e-col>
-        </e-row>
+        <el-row :gutter="20" type="flex" justify="space-around">
+            <el-col>
+                <a href="/buy?brand=奔驰">
+                    <img src="@/assets/car_brand/benchi.jpg" alt="">
+                    <br>
+                    <span>奔驰</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?brand=宝马">
+                    <img src="@/assets/car_brand/baoma.jpg" alt="">
+                    <br>
+                    <span>宝马</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?brand=奥迪">
+                    <img src="@/assets/car_brand/aodi.jpg" alt="">
+                    <br>
+                    <span>奥迪</span> 
+                </a>
+            </el-col>
+             <el-col>
+                <a href="/buy?brand=大众">
+                    <img src="@/assets/car_brand/dazhong.jpg" alt="">
+                    <br>
+                    <span>大众</span> 
+                </a>
+            </el-col>
+             <el-col>
+                <a href="/buy?brand=保时捷">
+                    <img src="@/assets/car_brand/baoshijie.jpg" alt="">
+                    <br>
+                    <span>保时捷</span> 
+                </a>
+            </el-col>
+             <el-col>
+                <a href="/buy?brand=丰田">
+                    <img src="@/assets/car_brand/fentian.jpg" alt="">
+                    <br>
+                    <span>丰田</span> 
+                </a>
+            </el-col>
+             <el-col>
+                <a href="/buy?brand=路虎">
+                    <img src="@/assets/car_brand/luhu.jpg" alt="">
+                    <br>
+                    <span>路虎</span> 
+                </a>
+            </el-col>
+        </el-row>
+        <br>
+        <el-row :gutter="20" type="flex" justify="space-around">
+            <el-col>
+                <a href="/buy?price=5">
+                    <span>3万以下</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?price=5">
+                    <span>5万以下</span> 
+                </a>
+            </el-col>
+
+            <el-col>
+                <a href="/buy?price=10">
+                    <span>10万以下</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?price=15">
+                    <span>15万以下</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?price=20">
+                    <span>20万以下</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?price=25">
+                    <span>25万以下</span> 
+                </a>
+            </el-col>
+
+            <el-col>
+                <a href="/buy?price=25">
+                    <span>30万以下</span> 
+                </a>
+            </el-col>
+            
+        </el-row>
+        <br>
+        <el-row :gutter="20" type="flex" justify="space-around">
+            <el-col>
+                <a href="/buy?style=时尚型">
+                    <span>时尚型</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?style=豪华版">
+                    <span>豪华版</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?style=舒适型">
+                    <span>舒适型</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?style=国V">
+                    <span>国V</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?style=时尚型">
+                    <span>时尚型</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?style=运动型">
+                    <span>运动型</span> 
+                </a>
+            </el-col>
+            <el-col>
+                <a href="/buy?style=SUV">
+                    <span>SUV</span> 
+                </a>
+            </el-col>
+            
+        </el-row>
     </div>
 
     <!-- 今日推荐 -->
@@ -62,6 +189,11 @@ export default {
      margin-top: 30px;
      .r-b-top{
          text-align: left;
+         margin-bottom: 5px;
+     }
+     img{
+         width: 40px;
+         height: 40px;
      }
 }
 .recommend {
