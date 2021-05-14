@@ -15,12 +15,12 @@
         <el-menu-item index="/buy"> 买车 </el-menu-item>
       </el-menu>
       <div>
-        <router-link to="/login" id="login" v-show="!isLogin()"
-          >登录</router-link
+        <router-link to="/login" class="login-text" v-show="!isLogin()"
+          >登录/注册</router-link
         >
       </div>
       <div>
-        <router-link to="/user" id="login" v-show="isLogin()"
+        <router-link to="/user" class="login-text" v-show="isLogin()"
           >欢迎：{{ userInfo().username }}</router-link
         >
       </div>
@@ -77,7 +77,7 @@ export default {
     font-weight: 800;
     color: #2c3e50;
   }
-  #login {
+  .login-text {
     font-size: 16px;
     font-weight: 400;
   }
