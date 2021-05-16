@@ -161,11 +161,22 @@
                 {{ item.mileage }}万公里/{{ item.year }}/{{ item.location }}
               </div>
               <div style="margin-top: 6px">
-                <span class="r-card-center-price1">{{ item.current_price }}万</span>
-                <span class="r-card-center-price2">{{ item.original_price }}万</span >
+                <span class="r-card-center-price1"
+                  >{{ item.current_price }}万</span
+                >
+                <span class="r-card-center-price2"
+                  >{{ item.original_price }}万</span
+                >
               </div>
             </div>
           </el-card>
+        </el-col>
+      </el-row>
+      <el-row class="recommend-bottom">
+        <el-col>
+          <router-link to="/tuijian">
+            <el-button plain>查看更多<i class="el-icon-right"></i> </el-button>
+          </router-link>
         </el-col>
       </el-row>
     </div>
@@ -360,8 +371,8 @@ export default {
       border-right: solid 3px #409eff;
     }
   }
-  .r-card{
-      margin-bottom: 15px;
+  .r-card {
+    margin-bottom: 15px;
   }
   .r-card-center {
     padding: 7px 15px 7px 15px;
@@ -393,6 +404,14 @@ export default {
       font-size: 14px;
       margin-left: 5px;
       text-decoration: line-through;
+    }
+  }
+  .recommend-bottom {
+    margin-top: 10px;
+    button {
+      width: 248px;
+      height: 48px;
+      line-height: 24px;
     }
   }
 }
