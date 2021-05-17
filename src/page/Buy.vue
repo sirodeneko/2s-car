@@ -1,5 +1,9 @@
 <template>
-  <div id="buy" class="center"></div>
+  <div id="buy" class="center">
+      <div class="buy-select">
+          
+      </div>
+  </div>
 </template>
 
 <script>
@@ -9,7 +13,12 @@ export default {
     return {};
   },
   methods: {
-    load() {},
+    load() {
+        let price=this.$route.query.price;
+        console.log(price);
+        let xxx=this.$route.query.xxx;
+        console.log(xxx);
+    },
   },
   created() {
     this.load();
@@ -17,4 +26,15 @@ export default {
 };
 </script>
 
-<style lang="less"></style>
+<style lang="less">
+#buy{
+    .buy-select{
+        width: 100%;
+        margin: 3px;
+        min-height: 100px;
+        background-color: white;
+        border-radius: 5px;
+        border: solid 1px #eee;;
+    }
+}
+</style>
