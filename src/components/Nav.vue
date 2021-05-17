@@ -50,12 +50,12 @@ export default {
       this.$store.commit("setUserInfo", { username: "小白菜" });
     },
     handleChange(value) {
-      let city={
-        id:value[1],
-        name:this.$refs.cascader1.getCheckedNodes(value)[0].label,
-      }
+      let city = {
+        id: value[1],
+        name: this.$refs.cascader1.getCheckedNodes(value)[0].label,
+      };
       console.log(city);
-      this.$store.commit("setCity",city);
+      this.$store.commit("setCity", city);
     },
     isLogin() {
       return this.$store.getters.getIsLogin;

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-BASE_URL = "http://localhost:8080";
+let BASE_URL = "http://localhost:8080";
 
 //登录
 const postLogin = (form) =>
