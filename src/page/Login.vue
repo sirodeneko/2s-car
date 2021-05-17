@@ -5,7 +5,7 @@
         <el-col :span="10" :offset="12">
           <el-card class="login-card">
             <div slot="header">
-              <span >{{ pageState.cardText }}</span>
+              <span>{{ pageState.cardText }}</span>
             </div>
             <el-form
               :model="ruleForm"
@@ -28,7 +28,11 @@
                   autocomplete="off"
                 ></el-input>
               </el-form-item>
-              <el-form-item label="确认密码" prop="checkPass" v-if="!pageState.isLogin">
+              <el-form-item
+                label="确认密码"
+                prop="checkPass"
+                v-if="!pageState.isLogin"
+              >
                 <el-input
                   type="password"
                   v-model="ruleForm.checkPass"
@@ -41,9 +45,13 @@
                   >提交</el-button
                 >
                 <el-button @click="resetForm('ruleForm')">重置</el-button>
-                <el-button style=" padding: 3px 0" type="text" @click="changeText">
-                {{pageState.goText}}
-              </el-button>
+                <el-button
+                  style="padding: 3px 0"
+                  type="text"
+                  @click="changeText"
+                >
+                  {{ pageState.goText }}
+                </el-button>
               </el-form-item>
             </el-form>
           </el-card>
@@ -105,11 +113,11 @@ export default {
         checkPass: [{ validator: validatePass2, trigger: "blur" }],
         username: [{ validator: checkNumber, trigger: "blur" }],
       },
-      pageState:{
+      pageState: {
         cardText: "登录",
-        goText:"注册",
-        isLogin:true,
-      }
+        goText: "注册",
+        isLogin: true,
+      },
     };
   },
   methods: {
@@ -129,17 +137,17 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields();
     },
-    changeText(){
-      if(this.pageState.isLogin){
-        this.pageState.isLogin=false;
-        this.pageState.cardText="注册";
-        this.pageState.goText="登录";
-      }else{
-        this.pageState.isLogin=true;
-        this.pageState.cardText="登录";
-        this.pageState.goText="注册";
+    changeText() {
+      if (this.pageState.isLogin) {
+        this.pageState.isLogin = false;
+        this.pageState.cardText = "注册";
+        this.pageState.goText = "登录";
+      } else {
+        this.pageState.isLogin = true;
+        this.pageState.cardText = "登录";
+        this.pageState.goText = "注册";
       }
-    }
+    },
   },
   created() {
     this.load();

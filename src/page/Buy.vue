@@ -1,10 +1,10 @@
 <template>
-  <div id="index" class="center"></div>
+  <div id="buy" class="center"></div>
 </template>
 
 <script>
 export default {
-  name: "Helloword",
+  name: "Buy",
   data() {
     return {};
   },

@@ -18,11 +18,10 @@ export default {
 </script>
 
 <style lang="less">
-body{
-
-    background-color: #F5F5F5;
-    margin: 0;
-    padding: 0;
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -41,8 +40,12 @@ a,
   text-decoration: none;
 }
 
-a,a:link,a:visited,a:hover,a:active{
-    text-decoration: none;
-    color:inherit;
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 </style>

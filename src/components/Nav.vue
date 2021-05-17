@@ -12,7 +12,7 @@
       <el-menu :default-active="'/'" mode="horizontal" router>
         <el-menu-item index="/"> 首页 </el-menu-item>
         <el-menu-item index="/tuijian"> 二手车推荐 </el-menu-item>
-        <el-menu-item index="/buy"> 买车 </el-menu-item>
+        <el-menu-item index="/buy"> 找车 </el-menu-item>
       </el-menu>
       <div>
         <router-link to="/login" class="login-text" v-show="!isLogin()"
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="less">
-#nav{
+#nav {
   width: 100%;
   background-color: white;
 }
