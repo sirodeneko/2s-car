@@ -7,6 +7,7 @@
         :options="options"
         @change="handleChange"
         :show-all-levels="false"
+        ref="cascader1"
       ></el-cascader>
 
       <el-menu :default-active="'/'" mode="horizontal" router>
@@ -49,7 +50,12 @@ export default {
       this.$store.commit("setUserInfo", { username: "小白菜" });
     },
     handleChange(value) {
-      console.log(value);
+      let city={
+        id:value[1],
+        name:this.$refs.cascader1.getCheckedNodes(value)[0].label,
+      }
+      console.log(city);
+      this.$store.commit("setCity",city);
     },
     isLogin() {
       return this.$store.getters.getIsLogin;
@@ -70,7 +76,7 @@ export default {
   padding: 0 30px 0px 30px;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   border-bottom: solid 1px #e6e6e6;
   a {
     font-size: 30px;

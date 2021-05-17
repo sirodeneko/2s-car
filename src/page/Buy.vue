@@ -1,7 +1,11 @@
 <template>
   <div id="buy" class="center">
       <div class="buy-select">
-          
+          <el-row type="flex" justify="start">
+              <span class="buy-label">品 牌：</span> 
+              <span class="buy-label">品 牌：</span> 
+              <span class="buy-label">{{city.name}}</span> 
+          </el-row>
       </div>
   </div>
 </template>
@@ -10,7 +14,12 @@
 export default {
   name: "Buy",
   data() {
-    return {};
+    return {
+        city:this.$store.getters.getCity,
+        brandList:[],
+        priceList:[],
+        styleList:[],
+    };
   },
   methods: {
     load() {
@@ -18,6 +27,13 @@ export default {
         console.log(price);
         let xxx=this.$route.query.xxx;
         console.log(xxx);
+    },
+  },
+   watch:{
+    '$store.state.city':function(newVal){ 
+      if(newVal){
+          this.city=this.$store.state.city;
+      }
     },
   },
   created() {
@@ -35,6 +51,10 @@ export default {
         background-color: white;
         border-radius: 5px;
         border: solid 1px #eee;;
+        padding: 20px;
+        .buy-label{
+            margin-left: 5px;
+        }
     }
 }
 </style>

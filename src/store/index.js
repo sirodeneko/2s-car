@@ -6,8 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     city: {
-      id: 0,
-      name: "南昌",
+      id: 3601,
+      name: "南昌市",
     },
     isLogin: false,
     userInfo: {
