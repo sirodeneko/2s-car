@@ -1,6 +1,7 @@
 <template>
   <div id="car" class="center">
       好快的的车车
+      
   </div>
 </template>
 
