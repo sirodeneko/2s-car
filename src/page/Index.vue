@@ -129,8 +129,8 @@
           </a>
         </el-col>
         <el-col>
-          <a href="/buy?style=时尚型">
-            <span>时尚型</span>
+          <a href="/buy?style=练手车">
+            <span>练手车</span>
           </a>
         </el-col>
         <el-col>
