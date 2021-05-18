@@ -106,7 +106,7 @@
     <div class="buy-cars">
       <el-row :gutter="24">
         <el-col class="r-card" :span="6" v-for="item in carList" :key="item.id">
-          <el-card :body-style="{ padding: '0 0 15px 0' }" shadow="hover">
+          <el-card :body-style="{ padding: '0 0 15px 0' }" shadow="hover" @click.native="goCar(item)">
             <img :src="item.url" height="168px" width="100%" />
             <div class="r-card-center">
               <span class="r-card-center-title">{{ item.name }}</span>
@@ -315,7 +315,10 @@ export default {
       }
       console.log(form);
     },
-    //查找某标签是否存在
+    goCar(car){
+      this.$store.commit("setCar", car);
+      this.$router.push({ name: 'Car'});
+    },
   },
   watch: {
     "$store.state.city": function (newVal) {

@@ -16,6 +16,7 @@ export default new Vuex.Store({
       mobile: "",
       email: "",
     },
+    car:{},
   },
   getters: {
     getCity(state) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     getUserInfo(state) {
       return state.userInfo;
     },
+    getCar(state) {
+      return state.car;
+    },
   },
   mutations: {
     setCity(state, data) {
@@ -37,6 +41,9 @@ export default new Vuex.Store({
     },
     setUserInfo(state, data) {
       state.userInfo = data;
+    },
+    setCar(state, data) {
+      state.car = data;
     },
   },
   actions: {},
