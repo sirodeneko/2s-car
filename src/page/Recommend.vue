@@ -28,7 +28,11 @@
       >
         <el-row :gutter="24">
           <el-col class="r-card" :span="6" v-for="item in cars" :key="item.id">
-            <el-card :body-style="{ padding: '0 0 15px 0' }" shadow="hover" @click.native="goCar(item)">
+            <el-card
+              :body-style="{ padding: '0 0 15px 0' }"
+              shadow="hover"
+              @click.native="goCar(item)"
+            >
               <img :src="item.url" height="168px" width="100%" />
               <div class="r-card-center">
                 <span class="r-card-center-title">{{ item.name }}</span>
@@ -553,9 +557,9 @@ export default {
       console.log("----", index);
       this.tuijianIndex = index;
     },
-    goCar(car){
+    goCar(car) {
       this.$store.commit("setCar", car);
-      this.$router.push({ name: 'Car'});
+      this.$router.push({ name: "Car" });
     },
   },
   created() {

@@ -7,9 +7,8 @@
         </el-col>
         <el-col :span="12" class="car-content-right">
           <div class="car-title">{{ car.name }}</div>
-          <div class="car-"></div>
+          <div class="car-simple-info"></div>
         </el-col>
-
       </el-row>
     </div>
   </div>

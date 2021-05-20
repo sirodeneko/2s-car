@@ -16,7 +16,7 @@ export default new Vuex.Store({
       mobile: "",
       email: "",
     },
-    car:{},
+    car: {},
   },
   getters: {
     getCity(state) {
