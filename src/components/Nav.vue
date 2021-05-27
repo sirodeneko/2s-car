@@ -34,9 +34,6 @@ import cityInfo from "../tools/city.js";
 
 export default {
   name: "Nav",
-  props: {
-    // msg: String,
-  },
   data() {
     return {
       options: cityInfo,
