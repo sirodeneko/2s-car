@@ -184,6 +184,7 @@ export default {
       selete: {
         brandIndex: -1,
         priceIndex: -1,
+        styleIndex: -1,
       },
       tags: [{ key: "city", index: -1, name: "南昌" }],
       carList: [
@@ -203,6 +204,9 @@ export default {
   },
   methods: {
     load() {
+      // 调整标签
+      this.$store.commit("setRouterIndex", "/buy");
+      
       let price = this.$route.query.price;
       console.log(price);
       let xxx = this.$route.query.xxx;

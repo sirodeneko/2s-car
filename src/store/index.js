@@ -17,6 +17,7 @@ export default new Vuex.Store({
       email: "",
     },
     car: {},
+    routerIndex:"/"
   },
   getters: {
     getCity(state) {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     setCar(state, data) {
       state.car = data;
+    },
+    setRouterIndex(state, data) {
+      state.routerIndex = data;
     },
   },
   actions: {},

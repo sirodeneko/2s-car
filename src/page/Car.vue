@@ -24,6 +24,8 @@ export default {
   },
   methods: {
     load() {
+      // 调整标签
+      this.$store.commit("setRouterIndex", "/buy");
       console.log(this.car);
     },
   },

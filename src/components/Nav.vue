@@ -8,9 +8,10 @@
         @change="handleChange"
         :show-all-levels="false"
         ref="cascader1"
+        
       ></el-cascader>
 
-      <el-menu :default-active="'/'" mode="horizontal" router>
+      <el-menu :default-active="activeIndex" mode="horizontal" router>
         <el-menu-item index="/"> 首页 </el-menu-item>
         <el-menu-item index="/tuijian"> 二手车推荐 </el-menu-item>
         <el-menu-item index="/buy"> 找车 </el-menu-item>
@@ -21,7 +22,7 @@
         >
       </div>
       <div>
-        <router-link to="/user" class="login-text" v-show="isLogin()"
+        <router-link to="" class="login-text" v-show="isLogin()"
           >欢迎：{{ userInfo().username }}</router-link
         >
       </div>
@@ -38,6 +39,7 @@ export default {
     return {
       options: cityInfo,
       value: ["36", "3601"],
+      activeIndex:"/",
     };
   },
   methods: {
@@ -61,6 +63,13 @@ export default {
       return this.$store.getters.getUserInfo;
     },
   },
+  watch:{
+    "$store.state.routerIndex": function (newVal) {
+      if (newVal) {
+        this.activeIndex=newVal;
+      }
+    },
+  }
 };
 </script>
 

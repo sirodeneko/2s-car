@@ -334,7 +334,10 @@ export default {
     };
   },
   methods: {
-    load() {},
+    load() {
+      // 调整标签
+      this.$store.commit("setRouterIndex", "/");
+    },
     goCar(car) {
       this.$store.commit("setCar", car);
       this.$router.push({ name: "Car" });

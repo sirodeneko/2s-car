@@ -489,7 +489,10 @@ export default {
     };
   },
   methods: {
-    load() {},
+    load() {
+      // 调整标签
+      this.$store.commit("setRouterIndex", "/tuijian");
+    },
     drawChart() {
       // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(this.$refs.chart1);
