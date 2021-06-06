@@ -206,7 +206,7 @@ export default {
     load() {
       // 调整标签
       this.$store.commit("setRouterIndex", "/buy");
-      
+
       let price = this.$route.query.price;
       console.log(price);
       let xxx = this.$route.query.xxx;

@@ -28,9 +28,7 @@
           </el-table-column>
           <el-table-column prop="tag" label="标签">
             <template slot-scope="scope">
-              <el-tag  disable-transitions>{{
-                scope.row.tag
-              }}</el-tag>
+              <el-tag disable-transitions>{{ scope.row.tag }}</el-tag>
             </template>
           </el-table-column>
         </el-table>
@@ -63,8 +61,8 @@ export default {
         { id: 4, name: "小胖" },
         { id: 5, name: "小胖" },
       ],
-      total:5,
-      pageSize:10,
+      total: 5,
+      pageSize: 10,
     };
   },
   methods: {
@@ -176,9 +174,9 @@ export default {
           return 0;
       }
     },
-    pageChange(page){
+    pageChange(page) {
       console.log(page);
-    }
+    },
   },
   created() {
     this.load();

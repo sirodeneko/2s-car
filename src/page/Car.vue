@@ -3,10 +3,10 @@
     <div class="car-content">
       <el-row :gutter="20">
         <el-col :span="12" class="car-content-left">
-          <img :src="car.url" alt="" />
+          <img :src="car.img_url" alt="" width="200" />
         </el-col>
         <el-col :span="12" class="car-content-right">
-          <div class="car-title">{{ car.name }}</div>
+          <div class="car-title">{{ car.title }}</div>
           <div class="car-simple-info"></div>
         </el-col>
       </el-row>

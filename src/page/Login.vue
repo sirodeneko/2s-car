@@ -130,15 +130,17 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           console.log(this.ruleForm);
-          if(this.pageState.isLogin){
+          if (this.pageState.isLogin) {
             console.log("登陆请求");
             // TODO
 
             // 登陆成功
             this.$store.commit("setIsLogin", true);
-            this.$store.commit("setUserInfo", { username: this.ruleForm.username });
+            this.$store.commit("setUserInfo", {
+              username: this.ruleForm.username,
+            });
             this.$router.push({ name: "Recommend" });
-          }else{
+          } else {
             console.log("注册请求");
             // TODO
           }

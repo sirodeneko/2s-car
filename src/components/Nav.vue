@@ -8,7 +8,6 @@
         @change="handleChange"
         :show-all-levels="false"
         ref="cascader1"
-        
       ></el-cascader>
 
       <el-menu :default-active="activeIndex" mode="horizontal" router>
@@ -39,7 +38,7 @@ export default {
     return {
       options: cityInfo,
       value: ["36", "3601"],
-      activeIndex:"/",
+      activeIndex: "/",
     };
   },
   methods: {
@@ -63,13 +62,13 @@ export default {
       return this.$store.getters.getUserInfo;
     },
   },
-  watch:{
+  watch: {
     "$store.state.routerIndex": function (newVal) {
       if (newVal) {
-        this.activeIndex=newVal;
+        this.activeIndex = newVal;
       }
     },
-  }
+  },
 };
 </script>
 
