@@ -95,13 +95,13 @@ export default {
         xAxis: {
           name: "日期",
           data: [
-            "5-25",
-            "5-26",
-            "5-27",
-            "5-28",
-            "5-29",
-            "5-30",
-            { value: "6-01", textStyle: { color: "#409EFF" } },
+            "6-02",
+            "6-03",
+            "6-04",
+            "6-05",
+            "6-06",
+            "6-07",
+            { value: "6-08", textStyle: { color: "#409EFF" } },
           ],
         },
         yAxis: {

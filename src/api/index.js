@@ -7,4 +7,7 @@ const postLogin = (form) =>
 
 const postRegister = (form) =>
   axios.post("/api/register", qs.stringify(form)).then((res) => res.data);
-export { postLogin,postRegister };
+
+const getCar = (form) =>
+  axios.post("/car", form).then((res) => res.data);
+export { postLogin, postRegister,getCar };

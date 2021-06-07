@@ -29,7 +29,8 @@
               </div>
             </div>
             <div class="car-reference">
-              <span class="car-reference-l">参考售价：</span><span class="car-reference-r">{{ carReference }}万</span>
+              <span class="car-reference-l">参考售价：</span
+              ><span class="car-reference-r">{{ carReference }}万</span>
             </div>
             <div class="car-price">
               <div class="car-price-num">
@@ -40,15 +41,17 @@
                 >新车含税价：{{ car.original_price }}万</s
               >
             </div>
-            
+
             <div class="car-price-bnt">
-              <!-- <el-button plain
-              @click="bntText=car."
-                >{{bntText}}
-              </el-button> -->
+              <el-button plain @click="changeText">{{ bntText }} </el-button>
             </div>
           </el-col>
         </el-row>
+      </div>
+
+      <div class="dangan">
+        <div class="dangan-title">车辆档案</div>
+        <div class="dangan-text" v-html="car.html"></div>
       </div>
     </div>
   </div>
@@ -61,7 +64,7 @@ export default {
     return {
       //car: this.$store.getters.getCar,
       carReference: "0~100",
-      bntText:"查看号码",
+      bntText: "查看号码",
       car: {
         id: 9999,
         title: "奥迪A5 2017款 Sportback 40 TFSI 时尚型",
@@ -71,6 +74,7 @@ export default {
         mileage: 6.0,
         year: 2019,
         img_url: require("./../assets/qvanchifang.jpg"),
+        phone: "123123123",
         html: `
       <ul class="basic-item-ul">
           <li><span class="item-name">上牌时间</span>2018年01月</li>
@@ -116,6 +120,9 @@ export default {
         ((num * (100 - l)) / 100).toFixed(2).toString() +
         "~" +
         ((num * (100 + r)) / 100).toFixed(2).toString();
+    },
+    changeText() {
+      this.bntText = this.car.phone;
     },
   },
   created() {
@@ -181,26 +188,87 @@ export default {
           margin-right: 15px;
         }
       }
-      .car-reference{
-         display: flex;
+      .car-reference {
+        display: flex;
         padding: 20px 0 20px 0;
         align-items: center;
         font-size: 20px;
-        .car-reference-l{
+        .car-reference-l {
           font-weight: 700;
         }
-        .car-reference-r{
+        .car-reference-r {
           color: tomato;
         }
       }
-      .car-price-bnt{
-        margin-top: 25px;
-        button{
+      .car-price-bnt {
+        margin: 25px auto 0 auto;
+        padding-right: 20%;
+        display: flex;
+        //justify-content: center;
+        button {
           width: 200px;
           height: 50px;
           font-size: 20px;
           font-weight: 700;
         }
+      }
+    }
+  }
+
+  .dangan {
+    //margin-top: 25px;
+
+    .dangan-title {
+      line-height: 1;
+      font-size: 28px;
+      font-weight: bold;
+      color: #111e36;
+      padding: 50px 0 30px;
+      text-align: left;
+    }
+    .dangan-text {
+      padding: 50px 0;
+      position: relative;
+      box-sizing: border-box;
+      border: 1px solid #e6e6e6;
+      text-align: left;
+      .basic-item-ul {
+        list-style: none;
+        padding-left: 85px;
+        border-left: 1px dotted #e6e6e6;
+        float: left;
+        box-sizing: border-box;
+        overflow: hidden;
+        width: 330px;
+        &:first-child {
+          padding-left: 67px;
+          border-left: 0;
+        }
+        li {
+          margin-top: 20px;
+          line-height: 1;
+          font-size: 14px;
+          color: #1b1b1b;
+          &:first-child {
+            margin-top: 0;
+          }
+          .item-name {
+            width: 80px;
+            display: inline-block;
+            color: #999;
+          }
+          .link-more {
+            display: none;
+          }
+        }
+      }
+      .attention {
+        padding-left: 67px;
+        font-size: 12px;
+        line-height: 14px;
+        color: #999;
+        padding-top: 20px;
+        clear: both;
       }
     }
   }
