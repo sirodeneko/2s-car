@@ -1,9 +1,10 @@
 import axios from "axios";
-
-const BASE_URL = "http://localhost:8080";
+import qs from "qs"
 
 //登录
 const postLogin = (form) =>
-  axios.post(BASE_URL + "/api/login", form).then((res) => res.data);
+  axios.post("/api/login", qs.stringify(form)).then((res) => res.data);
 
-export { postLogin };
+const postRegister = (form) =>
+  axios.post("/api/register", qs.stringify(form)).then((res) => res.data);
+export { postLogin,postRegister };

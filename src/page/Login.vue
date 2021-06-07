@@ -63,6 +63,7 @@
 
 <script>
 //import qs from 'qs';
+import { postLogin,postRegister } from "@/api";
 export default {
   name: "Login",
   data() {
@@ -133,16 +134,44 @@ export default {
           if (this.pageState.isLogin) {
             console.log("登陆请求");
             // TODO
-
-            // 登陆成功
-            this.$store.commit("setIsLogin", true);
-            this.$store.commit("setUserInfo", {
-              username: this.ruleForm.username,
-            });
-            this.$router.push({ name: "Recommend" });
+            postLogin(this.ruleForm)
+              .then((res) => {
+                console.log("返回值：", res);
+                if (res.code != 0&&res.code!=200) {
+                  this.$message.error("登陆失败！！！" + res.msg);
+                } else {
+                  this.$message.success("登陆成功！！！");
+                  // 登陆成功
+                  this.$store.commit("setIsLogin", true);
+                  this.$store.commit("setUserInfo", {
+                    username: this.ruleForm.username,
+                  });
+                  this.$router.push({ name: "Recommend" });
+                }
+              })
+              .catch((error) => {
+                this.$message.error("网络原因，登陆失败！！！");
+                console.log("登录失败", error);
+              });
           } else {
             console.log("注册请求");
             // TODO
+            this.ruleForm.mobile="默认号码";
+            postRegister(this.ruleForm)
+              .then((res) => {
+                // console.log("返回值：", res);
+                if (res.code != 0) {
+                  this.$message.error("注册失败！！！" + res.msg);
+                } else {
+                  this.$message.success("注册成功！！！");
+                  // 登陆成功
+                 this.changeText();
+                }
+              })
+              .catch((error) => {
+                this.$message.error("网络原因，登陆失败！！！");
+                console.log("登录失败", error);
+              });
           }
         } else {
           console.log("error submit!!");
