@@ -63,7 +63,7 @@
 
 <script>
 //import qs from 'qs';
-import { postLogin,postRegister } from "@/api";
+import { postLogin, postRegister } from "@/api";
 export default {
   name: "Login",
   data() {
@@ -137,7 +137,7 @@ export default {
             postLogin(this.ruleForm)
               .then((res) => {
                 console.log("返回值：", res);
-                if (res.code != 0&&res.code!=200) {
+                if (res.code != 0 && res.code != 200) {
                   this.$message.error("登陆失败！！！" + res.msg);
                 } else {
                   this.$message.success("登陆成功！！！");
@@ -146,7 +146,11 @@ export default {
                   this.$store.commit("setUserInfo", {
                     username: this.ruleForm.username,
                   });
-                  this.$router.push({ name: "Recommend" });
+                  if (this.ruleForm.username == "zs") {
+                    this.$router.push({ name: "Admin" });
+                  } else {
+                    this.$router.push({ name: "Recommend" });
+                  }
                 }
               })
               .catch((error) => {
@@ -156,7 +160,7 @@ export default {
           } else {
             console.log("注册请求");
             // TODO
-            this.ruleForm.mobile="默认号码";
+            this.ruleForm.mobile = "默认号码";
             postRegister(this.ruleForm)
               .then((res) => {
                 // console.log("返回值：", res);
@@ -165,7 +169,7 @@ export default {
                 } else {
                   this.$message.success("注册成功！！！");
                   // 登陆成功
-                 this.changeText();
+                  this.changeText();
                 }
               })
               .catch((error) => {

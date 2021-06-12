@@ -73,7 +73,7 @@ export default {
         city: "台州",
         mileage: 6.0,
         year: 2019,
-        img_url: require("./../assets/qvanchifang.jpg"),
+        img_url: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         phone: "123123123",
         html: `
       <ul class="basic-item-ul">
