@@ -119,18 +119,18 @@
             shadow="hover"
             @click.native="goCar(item)"
           >
-            <img :src="item.url" height="168px" width="100%" />
+            <img :src="item.imgUrl" height="168px" width="100%" />
             <div class="r-card-center">
-              <span class="r-card-center-title">{{ item.name }}</span>
+              <span class="r-card-center-title">{{ item.title }}</span>
               <div class="r-card-center-title2">
                 {{ item.mileage }}万公里/{{ item.year }}/{{ item.location }}
               </div>
               <div style="margin-top: 6px">
                 <span class="r-card-center-price1"
-                  >{{ item.current_price }}万</span
+                  >{{ item.currentPrice }}万</span
                 >
                 <span class="r-card-center-price2"
-                  >{{ item.original_price }}万</span
+                  >{{ item.originalPrice }}万</span
                 >
               </div>
             </div>
@@ -142,6 +142,8 @@
 </template>
 
 <script>
+import { getCar } from "@/api";
+import { addr2url } from "../tools/deurl.js";
 export default {
   name: "Buy",
   data() {
@@ -190,14 +192,14 @@ export default {
       carList: [
         {
           id: 0,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
+          title: "奥迪A6L 2020款 45 TFSI 臻选动感型",
+          originalPrice: "30",
+          currentPrice: "19.9",
           location: "南昌",
           mileage: "2.33",
           year: "1998",
           brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          imgUrl: require("./../assets/loading.png"),
         },
       ],
     };
@@ -211,6 +213,29 @@ export default {
       console.log(price);
       let xxx = this.$route.query.xxx;
       console.log(xxx);
+
+    getCar({
+        isRandom: 1,
+        size: 12,
+        city:this.city.id*100,
+        current: Math.round(Math.random() * 100),
+      })
+        .then((res) => {
+          console.log("返回值：", res);
+          if (res.code != 0 && res.code != 200) {
+            this.$message.error("车辆获取失败！！！" + res.msg);
+          } else {
+            let cars = res.data.records;
+            for (let i = 0; i < cars.length; i++) {
+              cars[i].imgUrl = addr2url(cars[i].imgUrl);
+            }
+            this.carList = cars;
+          }
+        })
+        .catch((error) => {
+          this.$message.error("网络原因，车辆获取失败！！！");
+          console.log("车辆获取失败", error);
+        });
     },
     handleClose(tag) {
       for (let i = 0; i < this.tags.length; i++) {
@@ -306,7 +331,7 @@ export default {
       let form = {};
       // 城市
       if (isExist("city")) {
-        form.city = this.city.id + "00";
+        form.city = this.city.id *100;
       }
       // 品牌
       if (isExist("brand")) {
@@ -333,7 +358,27 @@ export default {
         let tag = isExist("mileage");
         form.mileage = this.mileageList[tag.index];
       }
+
+      form.size=12;
+      form.current= Math.round(Math.random() * 20);
+      form.isRandom=1;
       console.log(form);
+      getCar(form).then((res) => {
+          console.log("返回值：", res);
+          if (res.code != 0 && res.code != 200) {
+            this.$message.error("车辆获取失败！！！" + res.msg);
+          } else {
+            let cars = res.data.records;
+            for (let i = 0; i < cars.length; i++) {
+              cars[i].imgUrl = addr2url(cars[i].imgUrl);
+            }
+            this.carList = cars;
+          }
+        })
+        .catch((error) => {
+          this.$message.error("网络原因，车辆获取失败！！！");
+          console.log("车辆获取失败", error);
+        });
     },
     goCar(car) {
       this.$store.commit("setCar", car);

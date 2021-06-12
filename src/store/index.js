@@ -17,12 +17,12 @@ export default new Vuex.Store({
       email: "",
     },
     car: {
-      id: 9999,
+      id: 99999,
       title: "奥迪A5 2017款 Sportback 40 TFSI 时尚型",
       original_price: 111.59,
-      current_prince: 63.80,
+      current_prince: 63.8,
       city: "台州",
-      mileage: 6.00,
+      mileage: 6.0,
       year: 2019,
       img_url: "/img/qvanchifang.jpg",
       html: `

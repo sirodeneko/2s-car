@@ -33,18 +33,18 @@
               shadow="hover"
               @click.native="goCar(item)"
             >
-              <img :src="item.url" height="168px" width="100%" />
+              <img :src="item.imgUrl" height="168px" width="100%" />
               <div class="r-card-center">
-                <span class="r-card-center-title">{{ item.name }}</span>
+                <span class="r-card-center-title">{{ item.title }}</span>
                 <div class="r-card-center-title2">
                   {{ item.mileage }}万公里/{{ item.year }}/{{ item.location }}
                 </div>
                 <div style="margin-top: 6px">
                   <span class="r-card-center-price1"
-                    >{{ item.current_price }}万</span
+                    >{{ item.currentPrice }}万</span
                   >
                   <span class="r-card-center-price2"
-                    >{{ item.original_price }}万</span
+                    >{{ item.originalPrice }}万</span
                   >
                 </div>
               </div>
@@ -79,6 +79,8 @@
 </template>
 
 <script>
+import { getCar } from "@/api";
+import { addr2url } from "../tools/deurl.js";
 export default {
   name: "Recommend",
   data() {
@@ -86,134 +88,46 @@ export default {
       {
         id: 0,
         name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
+        originalPrice: "30",
+        currentPrice: "19.9",
         location: "南昌",
         mileage: "2.33",
         year: "1998",
         brand: "奥迪",
-        url: require("./../assets/loading.png"),
+        imgUrl: require("./../assets/loading.png"),
       },
       {
         id: 1,
         name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
+        originalPrice: "30",
+        currentPrice: "19.9",
         location: "南昌",
         mileage: "2.33",
         year: "1998",
         brand: "奥迪",
-        url: require("./../assets/loading.png"),
+        imgUrl: require("./../assets/loading.png"),
       },
       {
         id: 2,
         name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
+        originalPrice: "30",
+        currentPrice: "19.9",
         location: "南昌",
         mileage: "2.33",
         year: "1998",
         brand: "奥迪",
-        url: require("./../assets/loading.png"),
+        imgUrl: require("./../assets/loading.png"),
       },
       {
         id: 3,
         name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
+        originalPrice: "30",
+        currentPrice: "19.9",
         location: "南昌",
         mileage: "2.33",
         year: "1998",
         brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 4,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 5,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 6,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 7,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 8,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 9,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 10,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
-      },
-      {
-        id: 11,
-        name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-        original_price: "30",
-        current_price: "19.9",
-        location: "南昌",
-        mileage: "2.33",
-        year: "1998",
-        brand: "奥迪",
-        url: require("./../assets/loading.png"),
+        imgUrl: require("./../assets/loading.png"),
       },
     ];
     return {
@@ -492,6 +406,94 @@ export default {
     load() {
       // 调整标签
       this.$store.commit("setRouterIndex", "/tuijian");
+      // 加载cars
+      getCar({
+        isRandom: 1,
+        size: 12,
+        city: 360100,
+        current: Math.round(Math.random() * 10),
+      }).then((res) => {
+        console.log("返回值：", res);
+        if (res.code != 0 && res.code != 200) {
+          this.$message.error("车辆获取失败！！！" + res.msg);
+        } else {
+          let cars = res.data.records;
+          for (let i = 0; i < cars.length; i++) {
+            cars[i].imgUrl = addr2url(cars[i].imgUrl);
+          }
+          this.tuijianData[0] = cars;
+          this.tuijianIndex = 1;
+          this.tuijianIndex = 0;
+        }
+      });
+      getCar({
+        isRandom: 1,
+        size: 12,
+        price: "0_10",
+        current: Math.round(Math.random() * 10),
+      }).then((res) => {
+        console.log("返回值：", res);
+        if (res.code != 0 && res.code != 200) {
+          this.$message.error("车辆获取失败！！！" + res.msg);
+        } else {
+          let cars = res.data.records;
+          for (let i = 0; i < cars.length; i++) {
+            cars[i].imgUrl = addr2url(cars[i].imgUrl);
+          }
+          this.tuijianData[1] = cars;
+        }
+      });
+      getCar({
+        isRandom: 1,
+        size: 12,
+        price: "10_15",
+        current: Math.round(Math.random() * 10),
+      }).then((res) => {
+        console.log("返回值：", res);
+        if (res.code != 0 && res.code != 200) {
+          this.$message.error("车辆获取失败！！！" + res.msg);
+        } else {
+          let cars = res.data.records;
+          for (let i = 0; i < cars.length; i++) {
+            cars[i].imgUrl = addr2url(cars[i].imgUrl);
+          }
+          this.tuijianData[2] = cars;
+        }
+      });
+      getCar({
+        isRandom: 1,
+        size: 12,
+        price: "0_15",
+        current: Math.round(Math.random() * 10),
+      }).then((res) => {
+        console.log("返回值：", res);
+        if (res.code != 0 && res.code != 200) {
+          this.$message.error("车辆获取失败！！！" + res.msg);
+        } else {
+          let cars = res.data.records;
+          for (let i = 0; i < cars.length; i++) {
+            cars[i].imgUrl = addr2url(cars[i].imgUrl);
+          }
+          this.tuijianData[3] = cars;
+        }
+      });
+      getCar({
+        isRandom: 1,
+        size: 12,
+        style: "豪华型",
+        current: Math.round(Math.random() * 10),
+      }).then((res) => {
+        console.log("返回值：", res);
+        if (res.code != 0 && res.code != 200) {
+          this.$message.error("车辆获取失败！！！" + res.msg);
+        } else {
+          let cars = res.data.records;
+          for (let i = 0; i < cars.length; i++) {
+            cars[i].imgUrl = addr2url(cars[i].imgUrl);
+          }
+          this.tuijianData[4] = cars;
+        }
+      });
     },
     drawChart() {
       // 基于准备好的dom，初始化echarts实例

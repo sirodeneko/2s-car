@@ -158,18 +158,18 @@
             shadow="hover"
             @click.native="goCar(item)"
           >
-            <img :src="item.url" height="168px" width="100%" />
+            <img :src="item.imgUrl" height="168px" width="100%" />
             <div class="r-card-center">
-              <span class="r-card-center-title">{{ item.name }}</span>
+              <span class="r-card-center-title">{{ item.title }}</span>
               <div class="r-card-center-title2">
-                {{ item.mileage }}万公里/{{ item.year }}/{{ item.location }}
+                {{ item.mileage }}万公里/{{ item.year }}/{{ item.city }}
               </div>
               <div style="margin-top: 6px">
                 <span class="r-card-center-price1"
-                  >{{ item.current_price }}万</span
+                  >{{ item.currentPrice }}万</span
                 >
                 <span class="r-card-center-price2"
-                  >{{ item.original_price }}万</span
+                  >{{ item.originalPrice }}万</span
                 >
               </div>
             </div>
@@ -188,6 +188,8 @@
 </template>
 
 <script>
+import { getCar } from "@/api";
+import { addr2url } from "../tools/deurl.js";
 export default {
   name: "Index",
   data() {
@@ -199,136 +201,84 @@ export default {
       ],
       carList: [
         {
-          id: 0,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
-        },
-        {
           id: 1,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
         {
           id: 2,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
         {
           id: 3,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
         {
           id: 4,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
         {
           id: 5,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
         {
           id: 6,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
         {
           id: 7,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
         {
           id: 8,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
-        },
-        {
-          id: 9,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
-        },
-        {
-          id: 10,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
-        },
-        {
-          id: 11,
-          name: "奥迪A6L 2020款 45 TFSI 臻选动感型",
-          original_price: "30",
-          current_price: "19.9",
-          location: "南昌",
-          mileage: "2.33",
-          year: "1998",
-          brand: "奥迪",
-          url: require("./../assets/loading.png"),
+          title: "揽胜运动版 2018款 3.0 SC V6 HSE DYNAMIC",
+          originalPrice: 111.59,
+          currentPrice: 63.8,
+          city: "台州",
+          mileage: 6.0,
+          year: 2018,
+          imgUrl: require("./../assets/7b84c5ef-d74d-4e32-8b07-1578b990f458.jpg"),
         },
       ],
     };
@@ -337,6 +287,28 @@ export default {
     load() {
       // 调整标签
       this.$store.commit("setRouterIndex", "/");
+      // 加载车辆
+      getCar({
+        isRandom: 1,
+        size: 12,
+        current: Math.round(Math.random() * 100),
+      })
+        .then((res) => {
+          console.log("返回值：", res);
+          if (res.code != 0 && res.code != 200) {
+            this.$message.error("车辆获取失败！！！" + res.msg);
+          } else {
+            let cars = res.data.records;
+            for (let i = 0; i < cars.length; i++) {
+              cars[i].imgUrl = addr2url(cars[i].imgUrl);
+            }
+            this.carList = cars;
+          }
+        })
+        .catch((error) => {
+          this.$message.error("网络原因，车辆获取失败！！！");
+          console.log("车辆获取失败", error);
+        });
     },
     goCar(car) {
       this.$store.commit("setCar", car);
